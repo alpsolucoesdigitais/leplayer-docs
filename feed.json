@@ -1,0 +1,14 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "LePlayer | Documentação",
+    "description": "",
+    "home_page_url": "https://alpsolucoesdigitais.github.io/leplayer-docs",
+    "feed_url": "https://alpsolucoesdigitais.github.io/leplayer-docs/feed.json",
+    "user_comment": "",
+    "icon": "https://alpsolucoesdigitais.github.io/leplayer-docs/media/website/Logo-LePlayer-2.png",
+    "author": {
+        "name": "Equipe LePlayer"
+    },
+    "items": [
+    ]
+}
