@@ -17,4 +17,46 @@ s0.parentNode.insertBefore(s1,s0);
                     this.classList.add('is-loaded');
                 }, false);
             }
-        }</script></body></html>
+        }</script><style>#custom-lightbox {
+    display: none; position: fixed; z-index: 10000; left: 0; top: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.9);
+    align-items: center; justify-content: center; cursor: pointer;
+    backdrop-filter: blur(5px);
+  }
+  #custom-lightbox img {
+    max-width: 90%; max-height: 90%; border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transform: scale(0.95); transition: transform 0.2s ease;
+    cursor: default;
+  }
+  #custom-lightbox.active { display: flex; }
+  #custom-lightbox.active img { transform: scale(1); }
+
+  /* O Botão X */
+  .close-lightbox {
+    position: absolute; top: 20px; right: 30px;
+    color: #fff; font-size: 40px; font-weight: bold;
+    cursor: pointer; line-height: 1; transition: 0.3s;
+    user-select: none; z-index: 10001;
+  }
+  .close-lightbox:hover { color: #ccc; transform: scale(1.1); }</style><div id="custom-lightbox"><span class="close-lightbox" onclick="document.getElementById('custom-lightbox').classList.remove('active')">&times;</span> <img id="lightbox-img" src="" alt="Zoom" onclick="event.stopPropagation();"></div><script>document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('custom-lightbox');
+    const modalImg = document.getElementById('lightbox-img');
+    
+    // Fecha ao clicar no fundo ou no X
+    modal.addEventListener('click', () => modal.classList.remove('active'));
+
+    // Seleciona imagens em qualquer área de conteúdo
+    const images = document.querySelectorAll('.page__content img, .post__content img, main img, article img');
+
+    images.forEach(img => {
+      if(img.offsetWidth > 100) { // Filtra só imagens reais, ignora ícones
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', function(e) {
+          e.stopPropagation();
+          modalImg.src = this.src;
+          modal.classList.add('active');
+        });
+      }
+    });
+  });</script></body></html>
